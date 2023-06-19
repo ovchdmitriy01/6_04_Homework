@@ -97,7 +97,7 @@ Docker Compose — входит в состав Docker. С помощью Docker
 * скриншот команды docker ps;
 * скриншот авторизации в админке Zabbix.
 <details>  
-version: '3.8'
+version: '3'
 
 services:
  ovchinnikovda-netology-db:
