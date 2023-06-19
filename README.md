@@ -97,7 +97,7 @@ Docker Compose — входит в состав Docker. С помощью Docker
 * скриншот команды docker ps;
 * скриншот авторизации в админке Zabbix.
 <details>  
-  version: '3'
+version: '3.8'
 
 services:
  ovchinnikovda-netology-db:
@@ -129,9 +129,9 @@ services:
     ovchinnikovda-my-netology-hw:
       ipv4_address: 172.22.0.3
   restart: always
- 
 
-zabbix-server:
+
+ zabbix-server:
   image: zabbix/zabbix-server-pgsql
   links:
     - ovchinnikovda-netology-db
@@ -151,16 +151,16 @@ zabbix-server:
  zabbix_wgui:
   image: zabbix/zabbix-web-apache-pgsql
   links:
-   - ovchinnikovda-netology-db
-   - pgadmin
-   - zabbix-server
+    - ovchinnikovda-netology-db
+    - pgadmin
+    - zabbix-server
   container_name: ovchinnikovda-netology-zabbix-frontend
   environment:
-   DB_SERVER_HOST: 172.22.0.2
-   POSTGRES_USER: postgres
-   POSTGRES_PASSWORD: ovchinnikovda12!3!!
-   ZBX_SERVER_HOST: zabbix_wgui
-   PHP_TZ: Europe/Moscow
+    DB_SERVER_HOST: '172.22.0.2'
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: ovchinnikovda12!3!!
+    ZBX_SERVER_HOST: zabbix_wgui
+    PHP_TZ: Europe/Moscow
   ports:
    - 80:8080
    - 443:8443
@@ -168,6 +168,9 @@ zabbix-server:
     ovchinnikovda-my-netology-hw:
       ipv4_address: 172.22.0.5
   restart: always
+
+
+
 
 networks:
  ovchinnikovda-my-netology-hw:
